@@ -1,0 +1,96 @@
+<!-- HTML !-->
+<style>
+
+        
+  .button1 {
+    background-color: #5aa35a;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 5;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button1:hover,
+  .button1:focus {
+    background-color: #df421a;
+  }
+</style>
+
+
+
+
+<div style="font-family: sans-serif ;  text-align: center; background-color: #16cbeb; border:1px dotted; padding: 5px 20px 20px 20px">
+
+    <h2>Papier Kamień Nożyce</h2>
+    
+    <button class="button1" onclick="rps2 ('papier')">Papier</button>
+    <button class="button1" onclick="rps2 ('kamień')">Kamień</button>
+    <button class="button1" onclick="rps2 ('nożyce')">Nożyce</button>
+    
+    
+        <div style="margin-left: 40% ; width: 20%; font-family: sans-serif ;  text-align: center; background-color: #72bd11; padding: 5px 2px 2px 2px">
+        <p id="rps_result2">Wybierz swój ruch!</p>
+        </div>
+    </div>
+    
+    <script>
+    
+    var choices = ['papier', 'kamień', 'nożyce'];
+    
+    function rps2 ( player) {
+    
+       const computer = choices [ Math.floor ( Math.random() * choices.length ) ];
+       
+       switch ( player ) {
+         case 'papier': choices.push ('nożyce'); break;
+         case 'kamień': choices.push ('papier'); break;
+         case 'nożyce': choices.push ('kamień'); break;
+       }
+    
+       result = 'Komputer wybrał ' + computer + '. ';
+    
+        if ( player == computer ) {
+            result += 'Remis!';
+    
+        } else {
+    
+            switch ( player ) {
+    
+                case 'papier':
+                    result += ( computer == 'kamień' ) ? 'Wygrałeś!' : 'Przegrałeś!';
+                    break;
+    
+                case 'kamień':
+                    result += ( computer == 'nożyce' ) ? 'Wygrałeś!' : 'Przegrałeś!';
+                    break;
+    
+                case 'nożyce':
+                    result += ( computer  == 'papier' ) ? 'Wygrałeś!' : 'Przegrałeś!';
+                    break;
+            }
+        }
+        
+        
+        document.getElementById ('rps_result2').textContent = result;
+       
+    }
+    
+    </script>
+
+
